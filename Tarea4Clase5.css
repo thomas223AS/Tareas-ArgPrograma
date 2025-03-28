@@ -1,0 +1,23 @@
+h2{
+    text-align: center;
+    background-color: rgb(17, 72, 145);
+    text-decoration: double;
+    border-radius: 10px;
+}
+ol {
+    background-color: rgb(21, 152, 161);
+    font-size:22px;
+    border-radius: 10px;
+    margin-top: 50px;
+}
+ul {
+    background-color: rgb(21, 152, 161);
+    font-size: 22px;
+    border-radius: 10px;
+}
+div {
+    background-color: rgb(13, 78, 121);
+    font-size: 35px;
+    border-radius: 10px;
+    font-family: 'Times New Roman', Times, serif;
+}
