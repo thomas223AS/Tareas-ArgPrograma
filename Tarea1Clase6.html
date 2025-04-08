@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="Tarea1Clase6.css"
+    <link rel="stylesheet" type="text/css" href="Tarea1Clase6.css">
 </head>
 <body>
     <form>
@@ -13,10 +13,16 @@
                 Ingresa la cantidad de familiares
                 <input type="number" id="familiares";>
             </label>
-            <button id="boton-empezar" onclick="clickEnviar()">Empecemos</button>
-            <div id="aca"></div>
-            <button id="boton-reiniciar">Reiniciar</button>
+            <div id ="familia"></div>
+            <button id="boton-empezar">Crear</button>
+            <button id="boton-reiniciar" type="reset">Reiniciar</button>
     </form>
+    <button id="calcular" type="button">Calcular</button>
+    <div class="oculto">
+        <p>La mayor edad:<strong id=mayor-edad></strong></p>
+        <p>La menor edad:<strong id="menor-edad"></strong></p>
+        <p>El promedio edad:<strong id="promedio-edad"></strong></p>
+    </div>
     <script src="Tarea1Clase6.js"></script>
 </body>
 
