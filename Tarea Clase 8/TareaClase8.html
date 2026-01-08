@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="TareaClase8.css">
+</head>
+<body>
+    <form>
+        <h1>Hola!</h1>
+            <label>
+                Ingresa la cantidad de familiares
+                <input type="number" id="familiares" name="familias">
+            </label>
+            <div id ="familia"></div>
+            <button id="boton-empezar">Crear</button>
+            <button id="boton-reiniciar" type="reset">Reiniciar</button>
+            
+
+    </form>
+    <button id="calcular" type="button">Calcular</button>
+    <div class="oculto">
+        <p>La mayor edad:<strong id=mayor-edad></strong></p>
+        <p>La menor edad:<strong id="menor-edad"></strong></p>
+        <p>El promedio edad:<strong id="promedio-edad"></strong></p>
+    </div>
+    <div id="errores" class="oculto"></div>
+    <div>
+    <button id="boton-enviar" type = "submit">Enviar</button>
+    </div>
+    <script src="TareaClase8.js"></script>
+    <script src="PruebasClase8.js"></script>
+</body>
+
+</html>
