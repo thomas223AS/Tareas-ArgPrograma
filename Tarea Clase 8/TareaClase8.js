@@ -9,7 +9,7 @@ $botonEmpezar.onclick = function(event){
     const $familiares =document.querySelector("#familiares");
     const cantidadFamiliares = Number($familiares.value);
 
-    const error = validarCantFamiliares($familiares.value);
+    const error = validarCantFamiliares(cantidadFamiliares);
 
     if (error !== ""){
      manejarErrores({familias:error});//como recibe un objeto, le paso un objeto con la key familiares y el valor error
@@ -42,26 +42,28 @@ function crearFamiliar(indice){
 
 }
 
-function creaFamiliares(cantFamiliares){
-    for (let familiar =0; familiar < cantFamiliares; familiar++)
+function crearFamiliares(cantFamiliares){
+    for (let familiar =0; familiar < cantFamiliares; familiar++){
         crearFamiliar(familiar);
+    }
 }
 
-function manejaCreacionDeFamiliares(){
+function manejarCreacionDeFamiliares(cantidadDeFamiliares,$inputFamiliares){
     const $errores = document.querySelector("#errores");
 
-    const $familiares = document.querySelector("#familiares");
-    const cantidadFamiliares = Number($familiares.value);
 
     borrarFamiliares();
-    reiniciaErrores($familiares);
-    reiniciaErrores($errores);
-    creaFamiliares(cantidadFamiliares);
+    reiniciarErrores($inputFamiliares);
+    reiniciarErrores($errores);
+    crearFamiliares(cantidadDeFamiliares);
 }
 
 $botonCalcular.onclick = function(event){
 
     const $inputEdades = document.querySelectorAll(".edades");
+    const $divResultados = document.querySelector("#resultados");
+
+    reiniciaResultados($divResultados);
 
     //almacena el objeto errores
      const errores = validarInputEdades($inputEdades); 
@@ -70,7 +72,7 @@ $botonCalcular.onclick = function(event){
     const cantidadDeErrores = manejarErrores(errores);
     
     if (cantidadDeErrores === 0){
-        escribeResultados();
+        escribeResultados($divResultados);
     }
 
     event.preventDefault();
@@ -85,9 +87,12 @@ function validarInputEdades($inputEdades){
         }
     return errores;
 }
+function reiniciaResultados($divResultados){
+    $divResultados.className="oculto";
+}
 
-function escribeResultados(){
-    const $divResultados = document.querySelector("#resultados");
+function escribeResultados($divResultados){
+    
     $divResultados.className="";
     const edades=obtenerEdades();
 
@@ -116,7 +121,7 @@ function manejarErrores(errores){
     const keys = Object.keys(errores);
     const $errores = document.querySelector("#errores");
 
-    reiniciaErrores($errores);
+    reiniciarErrores($errores);
     let cantidadErrores =0;
 
     keys.forEach(function(key){
@@ -142,16 +147,16 @@ function manejarErrores(errores){
     return cantidadErrores;
 }
 
-function reiniciaErrores(contenedorErrores){
+function reiniciarErrores(contenedorErrores){
     contenedorErrores.innerHTML ="";
     contenedorErrores.className="";
 }
 
 function obtenerEdades() {
-    const $F = document.querySelectorAll('.familiares input');
+    const $inputFamiliares = document.querySelectorAll('.familiares input');
     const edades =[];
-    for (let i=0; i<$F.length;i++){
-        edades.push(Number($F [i].value));
+    for (let i=0; i<$inputFamiliares.length;i++){
+        edades.push(Number($inputFamiliares[i].value));
     }
     return edades;
 }
