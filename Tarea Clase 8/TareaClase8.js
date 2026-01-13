@@ -63,8 +63,8 @@ $botonCalcular.onclick = function(event){
 
     const $inputEdades = document.querySelectorAll(".edades");
 
-    const numeros=obtenerEdades();
-    console.log(numeros);
+    //almacena el objeto errores
+     const errores = validarInputEdades($inputEdades); 
 
     // almacena la cantidad de errores
     const cantidadDeErrores = manejarErrores(errores);
@@ -72,6 +72,9 @@ $botonCalcular.onclick = function(event){
     if (cantidadDeErrores === 0){
         escribeResultados();
     }
+
+    event.preventDefault();
+}
 
 function validarInputEdades($inputEdades){
     const errores = {};
@@ -196,6 +199,9 @@ function validarEdad(edad){
 
     if(edad.length === 0 ){
         return "La edad no puede estar vacia"
+    }
+    if (edad === 0){
+        return "La edad no puede ser 0";
     }
     if (edad < 0){
         return "La edad no puede ser negativa";
