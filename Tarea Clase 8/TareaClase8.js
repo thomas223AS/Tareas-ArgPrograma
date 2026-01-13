@@ -7,7 +7,7 @@ const errores = {};
 
 $botonEmpezar.onclick = function(event){
     const $familiares =document.querySelector("#familiares");
-    const Familiares = Number($familiares.value);
+    const cantidadFamiliares = Number($familiares.value);
 
     const error = validarCantFamiliares($familiares.value);
 
@@ -54,7 +54,12 @@ $botonCalcular.onclick = function(event){
     const numeros=obtenerEdades();
     console.log(numeros);
 
-        const errores = {};
+    // almacena la cantidad de errores
+    const cantidadDeErrores = manejarErrores(errores);
+    
+    if (cantidadDeErrores === 0){
+        escribeResultados();
+    }
 
     for (let i=0;i<$inputEdades.length;i++){
         const $inputs = $inputEdades[i];
@@ -133,7 +138,7 @@ function obtenerEdades() {
     return edades;
 }
 
-function mayorEdad(edades){
+function calculaMayorEdad(edades){
     let mayorNumero=edades[0];
     for(let i=0; i<edades.length;i++){
         if (edades[i] > mayorNumero){
@@ -142,7 +147,7 @@ function mayorEdad(edades){
     }
 return mayorNumero;
 }
-function promedioEdad(edades){
+function calculaPromedioEdad(edades){
     let acumulador = 0;
     for (let i=0;i < edades.length;i++){
         acumulador +=edades[i];
@@ -150,7 +155,7 @@ function promedioEdad(edades){
     const promedio = acumulador / edades.length;
     return promedio;
 }
-function menorEdad(edades){
+function calculaMenorEdad(edades){
     let menorNumero = edades[0]
     for(let i=0;i<edades.length;i++){
         if (edades[i] < menorNumero){
@@ -172,7 +177,7 @@ function borrarFamiliares(){
 
 function validarEdad(edad){
 
-    const edadNumero = Number(edad); // abajo esta explicado el porque en validarCantFamiliares
+    const edadNumero = Number(edad); 
 
     if(edad.length === 0 ){
         return "La edad no puede estar vacia"
