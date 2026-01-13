@@ -20,14 +20,8 @@ $botonEmpezar.onclick = function(event){
     event.preventDefault();
 };
 
-function crearFamiliar(Familiares){
-    const $errores = document.querySelector("#errores");
-    const $inputFamiliares = document.querySelector("#familiares");
-    borrarFamiliares();
-    reiniciaErrores($inputFamiliares);
-    reiniciaErrores($errores);
-
-    for (let i=0; i < Familiares; i++){
+function crearFamiliar(indice){        
+ 
         const $div=document.createElement('div');
         $div.className='familiares';
 
@@ -35,7 +29,7 @@ function crearFamiliar(Familiares){
         $label.innerText='Ingresa la edad';
 
         const $input = document.createElement('input');
-        $input.name = "integrante-" + i;
+        $input.name = "integrante-" + indice;
         $input.className = "edades";
 
         $label.appendChild($input);
@@ -43,7 +37,9 @@ function crearFamiliar(Familiares){
 
         const $familia =document.querySelector("#familia");
         $familia.appendChild($div);
-    }
+    
+        
+
 }
 
 function creaFamiliares(cantFamiliares){
