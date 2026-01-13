@@ -92,20 +92,13 @@ function escribeResultados(){
     $divResultados.className="";
     const edades=obtenerEdades();
 
-    manejarErrores(errores);
-    cantErrores = manejarErrores(errores);
-    if (cantErrores === 0){
-     //tengo que arreglar lo de validar los errores porq no me anda bien
-    const mayor = mayorEdad(numeros);
-    const promedio = promedioEdad(numeros);
-    const menor = menorEdad(numeros);
+    const mayor = calculaMayorEdad(edades);
+    const promedio = calculaPromedioEdad(edades);
+    const menor = calculaMenorEdad(edades);
 
     document.querySelector('#mayor-edad').textContent = mayor;
     document.querySelector('#menor-edad').textContent = menor;
     document.querySelector('#promedio-edad').textContent = promedio;
-    }
-
-    event.preventDefault();
 }
 
 $botonReiniciar.onclick = function(event){
