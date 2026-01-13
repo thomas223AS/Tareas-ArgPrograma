@@ -14,7 +14,7 @@ $botonEmpezar.onclick = function(event){
     if (error !== ""){
      manejarErrores({familias:error});//como recibe un objeto, le paso un objeto con la key familiares y el valor error
     } else {
-        manejaCreacionDeFamiliares();
+        manejarCreacionDeFamiliares(cantidadFamiliares,$familiares);
     }
 
     event.preventDefault();
